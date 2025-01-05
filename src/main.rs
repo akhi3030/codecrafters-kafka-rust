@@ -15,6 +15,7 @@ struct Request {
 struct Response {
     message_size: u32,
     correlation_id: u32,
+    error_code: u16,
 }
 
 fn main() {
@@ -30,6 +31,7 @@ fn main() {
                 let resp = Response {
                     message_size: 0,
                     correlation_id: request.correlation_id,
+                    error_code: 35,
                 };
                 let msg = options.serialize(&resp).unwrap();
                 stream.write_all(&msg).unwrap();
