@@ -33,6 +33,7 @@ fn main() {
                 };
                 let msg = options.serialize(&resp).unwrap();
                 stream.write_all(&msg).unwrap();
+                stream.shutdown(std::net::Shutdown::Both).unwrap();
             }
             Err(e) => {
                 println!("error: {}", e);
